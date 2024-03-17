@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/schedule.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>trippn</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+
+</head>
+
+<body>
+    <!-- ////////////////////////////section4///////////////////////// -->
+    <section class="section4">
+        <navbar class="row">
+            <div class="heading flex-box col-lg-6 col-lg-12">
+                <p class="main_heading"><i>trippn</i></p>
+            </div>
+            <div class="links_container flex-box col-lg-6 col-lg-12">
+                <ul class="links">
+                    <li><a href="">PLAN</a></li>
+                    <li><a href="">TRIPS</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">ACCOUNT</a></li>
+                </ul>
+            </div>
+        </navbar>
+        <div class="header_mainContainer flex-box">
+            <div class="section4_content_box flex-box">
+                <p class="section4_p1">HERE'S YOUR ITINERARY!</p>
+                <p class="section4_p2">(FEEL FREE TO MOVE/APP THINGS)</p>
+                <div class="row calender-box">
+
+
+                    <!-- <div class="first_col"></div> -->
+                    <div class=" text-xl second_col overflow-y-auto max-h-90vh p-4 mx-auto shadow-lg rounded-lg bg-white text-gray-800" style="max-width: 90%;">
+                        <!-- Here generated response should display -->
+                        {{ formatted_response|safe }}
+                    </div>
+
+
+                </div>
+                <div class="section4_btnContainer">
+                    <!-- <button class="section4_btn1">SHARE</button> -->
+                    <button class="section4_btn2">EXPORT ITINERARY</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script>
+        document.querySelector('.section4_btn2').addEventListener('click', function() {
+            // Select the div containing the itinerary content
+            const itineraryDiv = document.querySelector('.second_col');
+    
+            // Set options for html2pdf
+            const options = {
+                margin: 10,
+                filename: 'itinerary.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+    
+            // Use html2pdf to generate the PDF
+            html2pdf()
+                .from(itineraryDiv)
+                .set(options)
+                .save();
+        });
+    </script>
+
+</body>
+
+</html>

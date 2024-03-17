@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/schedule.css">
+    <link rel="stylesheet" href="static/trippn.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>trippn</title>
+</head>
+
+<body>
+
+    <!-- ////////////////section2////////////////// -->
+    <section class="section2">
+        <navbar class="row">
+            <div class="heading flex-box col-lg-6 col-md-12">
+                <p class="main_heading"><i>trippn</i></p>
+            </div>
+            <div class="links_container flex-box col-lg-6 col-md-12">
+                <ul class="links">
+                    <li><a href="">PLAN</a></li>
+                    <li><a href="">TRIPS</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">ACCOUNT</a></li>
+                </ul>
+            </div>
+        </navbar>
+        <div class="header_mainContainer flex-box">
+            <div class="section2_contentBox flex-box">
+                <div class="section2_bigPara">
+                    <p class="section2_para">USING AI, TRIPPN WILL BUILD YOU A PERSONALIZED</p>
+                    <p class="section2_para">ITENERARY BASED ON YOUR PROFILE</p>
+                </div>
+                <P class="section2_para2">LET'S PLAN A TRIP!</P>
+                <P class="section2_para3">ENTER YOUR TRAVEL PLANS & DETAILS</P>
+                <div class="form_box">
+                    <form class="section2_form" method="post" action="{% url 'create_trip' %}">
+                        {% csrf_token %}
+                        <div class="input_box">
+                            <div class="input_box1">
+                                <label class="input_label 1" for="id_travel_from">WHERE ARE YOU TRAVELLING FROM?</label>
+                                <input class="inp_1" type="text" name="travel_from" id="id_travel_from">
+                            </div>
+                            <div class="input_box2">
+                                <label class="input_label" for="id_travel_to">WHERE ARE YOU GOING?</label>
+                                <input class="inp_2" type="text" name="travel_to" id="id_travel_to">
+                            </div>
+                            <div class="input_box3">
+                                <label class="input_label" for="id_start_date">START OF TRIP</label>
+                                <input class="inp_3" type="text" name="start_date" id="id_start_date">
+                            </div>
+                            <div class="input_box4">
+                                <label class="input_label" for="id_end_date">END OF TRIP</label>
+                                <input class="inp_4" type="text" name="end_date" id="id_end_date">
+                            </div>
+                            <div class="input_box5">
+                                <label class="input_label" for="id_travellers">TRAVELLERS</label>
+                                <input class="inp_5" type="text" name="travellers" id="id_travellers">
+                            </div>
+                        </div>
+                        <div class="btn_descriptionBox">
+                            <p class="btn_description_para">+DO YOU WANT TO ADD STOP?</p>
+                            <a href="schedule">
+                                <button type="submit" class="submit_btn">BUILD ITINERARY</button>
+                            </a>
+                        </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
